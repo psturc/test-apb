@@ -1,0 +1,20 @@
+- name: Test test-apb
+  hosts: localhost
+  gather_facts: false
+  connection: local
+
+  roles:
+  - role: ansible.kubernetes-modules
+    install_python_requirements: no
+  - role: ansibleplaybookbundle.asb-modules
+
+  post_tasks:
+  - name: create project for namespace
+    openshift_v1_project:
+      name: '{{ namespace }}'
+  - name: Run the provision role.
+    include_role:
+      name: provision-test-apb
+  - name: Run the verify role.
+    include_role:
+      name: verify-test-apb
