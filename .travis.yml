@@ -9,4 +9,4 @@ before_script:
   - cd mobile-core
   - pip install ansible
 script:
-  - bash ./installer/install.sh
+  - ansible-galaxy install -r ./installer/requirements.yml
