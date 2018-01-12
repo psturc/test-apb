@@ -1,5 +1,5 @@
 language: python
-python: "2.7"
+python: "3.6"
 dist: trusty
 sudo: required
 group: edge
@@ -8,7 +8,6 @@ before_script:
   - git clone https://github.com/aerogear/mobile-core
   - cd mobile-core
   - pip install ansible
-  - sudo apt-get install python-apt
 script:
   - ansible-galaxy install -r ./installer/requirements.yml
   - ansible-playbook ./installer/playbook.yml
