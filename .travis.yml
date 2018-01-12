@@ -10,3 +10,4 @@ before_script:
   - pip install ansible
 script:
   - ansible-galaxy install -r ./installer/requirements.yml
+  - ansible-playbook ./installer/playbook.yml
