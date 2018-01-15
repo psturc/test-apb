@@ -5,20 +5,5 @@
     return_content: yes
   register: webpage
   retries: 10
-  delay: 5
+  delay: 10
   until: webpage.status == 200
-
-- name: Save failure for the web page
-  asb_save_test_result:
-    fail: true
-    msg: "Could not reach route and retrieve a 200 status code. Recieved status - {{ webpage.status }}"
-  when: webpage.status != 200
-  
-- fail:
-    msg: "Could not reach route and retrieve a 200 status code. Recieved status - {{ webpage.status }}"
-  when: webpage.status != 200
-  
-- name: Save test pass
-  asb_save_test_result:
-    fail: false
-  when: webpage.status == 200
